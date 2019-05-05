@@ -37,9 +37,9 @@ spring:
   datasource: 
 #oracle配置
 #      driver-class-name: oracle.jdbc.OracleDriver
-#      url: jdbc:oracle:thin:@10.8.200.161:1521:ghisdev
-#      username: slisoper
-#      password: YU##h67YUO3
+#      url: jdbc:oracle:thin:@----:1521:ghisdev
+#      username: ----
+#      password: ----
 #mysql配置
 #      driver-class-name: com.mysql.cj.jdbc.Driver  spring boot 2.1.0以后是这么写的
 #      driver-class-name: com.mysql.jdbc.Driver 
