@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+encoding//src/main/java=UTF-8
+encoding//src/main/resources=UTF-8
+encoding//src/main/resources/templates/layout/main.ftl=UTF-8
+encoding//src/main/resources/templates/layout/partials/foot.ftl=UTF-8
+encoding//src/main/resources/templates/layout/partials/head.ftl=UTF-8
+encoding//src/main/resources/templates/layout/partials/left.ftl=UTF-8
+encoding//src/main/resources/templates/layout/partials/top.ftl=UTF-8
+encoding//src/test/java=UTF-8
+encoding/<project>=UTF-8

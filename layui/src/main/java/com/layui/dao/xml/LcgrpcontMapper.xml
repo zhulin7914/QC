@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.layui.dao.mapper.LcgrpcontMapper">
+
+    <!--  查询所有保单，mybatis-plus 自动替你分页-->
+    <select id="selectAllList" resultType="com.layui.dao.entity.Lcgrpcont">
+			select t.prtno,
+			       t.grpcontno,
+			       t.managecom,
+			       t.prem,
+			       t.appntno,
+			       t.grpname,
+			       t.cvalidate,
+			       t.signdate
+			  from lcgrpcont t
+	</select>
+	
+	<!--  查询所有保单总数-->
+    <select id="selectAllCount" resultType="java.lang.Long">
+			select count(1)  from lcgrpcont
+	</select>
+	
+    <!--  mybatis-plus 自动替你分页-->
+    <select id="selectPageVo" resultType="com.layui.dao.entity.Lcgrpcont">
+			select t.prtno,
+			       t.grpcontno,
+			       t.managecom,
+			       t.prem,
+			       t.appntno,
+			       t.grpname,
+			       t.cvalidate,
+			       t.signdate
+			  from lcgrpcont t
+			where t.grpcontno = #{grpcontno}
+	</select>
+
+</mapper>

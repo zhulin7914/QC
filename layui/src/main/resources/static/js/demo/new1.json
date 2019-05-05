@@ -1,0 +1,67 @@
+{
+  "code": 0,
+  "msg": "",
+  "count": 1000,
+  "data": [
+    {
+      "grpcontno": "8028000000991688",
+      "managecom": "86010101",
+      "email":"123@126.com",
+      "prem": "128.00",
+      "grpname": "城市-0",
+      "appntname": "代号-0",
+      "experience": 255,
+      "ip":"127.0.0.1",
+      "logins": 24,
+      "signdate": "2019-01-01"
+    },
+    {
+      "grpcontno": "8028000001991688",
+      "managecom": "86010101",
+      "email":"123@126.com",
+      "prem": "128.00",
+      "grpname": "城市-0",
+      "appntname": "代号-0",
+      "experience": 255,
+      "ip":"127.0.0.1",
+      "logins": 24,
+      "signdate": "2019-01-01"
+    },
+    {
+      "grpcontno": "8028000002991688",
+      "managecom": "86010101",
+      "email":"123@126.com",
+      "prem": "128.00",
+      "grpname": "城市-0",
+      "appntname": "代号-0",
+      "experience": 255,
+      "ip":"127.0.0.1",
+      "logins": 24,
+      "signdate": "2019-01-01"
+    },
+    {
+      "grpcontno": "8028000003991688",
+      "managecom": "86010101",
+      "email":"123@126.com",
+      "prem": "128.00",
+      "grpname": "城市-0",
+      "appntname": "代号-0",
+      "experience": 255,
+      "ip":"127.0.0.1",
+      "logins": 24,
+      "signdate": "2019-01-01"
+    },
+    {
+      "grpcontno": "8028000004991688",
+      "managecom": "86010101",
+      "email":"123@126.com",
+      "prem": "128.00",
+      "grpname": "城市-0",
+      "appntname": "代号-0",
+      "experience": 255,
+      "ip":"127.0.0.1",
+      "logins": 24,
+      "signdate": "2019-01-01"
+    }
+  ]
+}
