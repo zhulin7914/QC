@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zhulin.layui.dao.mapper.UserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="org.zhulin.layui.dao.entity.User">
+    	<result column="id" property="id" />
+        <result column="email" property="email" />
+        <result column="nick_name" property="nickName" />
+        <result column="pass_word" property="passWord" />
+        <result column="reg_time" property="regTime" />
+        <result column="user_name" property="userName" />
+    </resultMap>
+
+    <!--  mybatis-plus 自动替你分页-->
+    <select id="selectPageVo" resultType="org.zhulin.layui.dao.entity.User">
+	    SELECT id,nick_name FROM user WHERE user_name=#{userName}
+	</select>
+	
+</mapper>

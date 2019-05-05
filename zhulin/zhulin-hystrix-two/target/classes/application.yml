@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: hystrix-two #服务名
+
+server:
+  port: 8303 #服务提供者端口
+ 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+ 
+#暴露 endpoints ，断路器监控需要，这部分需要学习actuator 服务监控与管理       
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      cors:
+        allowed-origins: "*"
+        allowed-methods: "*"

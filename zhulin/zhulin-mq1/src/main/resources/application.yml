@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: config-mq1 #服务名
+#配置RabbitMQ消息中间件    
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: root
+    password: root
+    publisher-confirms: true # 消息发送到交换机确认机制：开启发送确认
+    publisher-returns: true   # 消息发送到交换机确认机制：开启发送失败退回
+    listener:
+      # 开启ACK消息确认
+      direct.acknowledge-mode: manual  #采用手动应答
+      simple.acknowledge-mode: manual
+
+
+server:
+  port: 8401  #服务提供者端口
+  
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

@@ -1,0 +1,67 @@
+spring:
+  application:
+    name: service-gateway-two #服务名
+
+server:
+  port: 8602 #服务提供者端口
+ 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+#在application.yml再建一个配置文件，语法是三个横线
+---
+spring:
+  cloud:
+    gateway:
+      #0.开启自动的路由到其他服务    
+      discovery:
+          # 是否可以通过其他服务的serviceId来转发到具体的服务实例。默认为false
+          # 为true,自动创建路由,路由访问方式：http://Gateway_HOST:Gateway_PORT/大写的serviceId/**，其中微服务应用名默认大写访问
+          # 如：访问 http://localhost:8602/FILESERVER-01/springboot/hi?name=zgd
+          # 如果需要小写serviceId,则配置spring.cloud.gateway.locator.lowerCaseServiceId:true
+          # 不管小写大写,不能使用下划线,否则会报错
+        locator.enabled: true
+      #可以根据请求参数,cookie,host,请求时间,请求头等进行校验判断路由, 下面根据先后顺序转发
+      routes:
+        #1.手动绑定路由到其他服务,url需要用[lb://]+[serviceId]    
+        - id: service-ribbon
+          uri: lb://service-ribbon
+          predicates:
+            - Path=/to_client/** # 如果请求地址满足/to_client/**,则转发到 service-client 服务
+          filters:
+            - StripPrefix=1 # 去除请求地址中的to_client
+        #2.参数路由
+        - id: query_route
+          uri: http://httpbin.org:80/get
+          predicates:
+            - Query=username, zzz* # 请求参数含有username,且值满足zzz开头的,则转发(对值的匹配可以省略)
+          filters:
+            - AddRequestHeader=X-Request-Foo, Bar
+            - AddRequestParameter=age, 18
+        #3.地址路由
+        - id: host_route
+          uri: http://httpbin.org:80/get
+          predicates:
+            - Path=/zzzgd/** # 请求地址携带zzzgd的,则转发
+        #4.域名路由    
+        - id: host_route
+          uri: http://httpbin.org:80/get
+          predicates:
+            - Host=**.csdn.** # 请求域名携带csdn的,则转发
+        #5.请求头路由   
+        - id: header_route
+          uri: http://httpbin.org:80/get
+          predicates:
+            - Header=request, \d+ # 如果请求头含有request,且为数字,则转发
+        #6. cookie路由
+        - id: cookie_route
+          uri: http://httpbin.org:80/get
+          predicates:
+            - Cookie=name, zzzgd # 如果携带cookie,参数名为name,值为zzzgd,则转发
+        #7. 时间路由    
+        - id: after_route
+          uri: http://httpbin.org:80/get
+          predicates:
+            - After=2019-01-01T17:42:47.789-07:00[America/Denver] # 如果请求时间大于该时间,则转发

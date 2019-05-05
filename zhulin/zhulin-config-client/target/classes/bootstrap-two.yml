@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: config-client #服务名
+  cloud:
+#链接配置中心配置  
+    config:
+      label: master #配置仓库的分支
+      profile: dev #开发环境配置文件
+      discovery:
+        enabled: true #是从配置中心读取文件
+        serviceId: config-server #配置中心的servieId，即服务名
+#消息总线配置
+    bus:
+      enabled: true
+      trace.enabled: true
+#配置RabbitMQ消息中间件    
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: root
+    password: root
+
+# 加载bus-refresh端点，这部分需要学习actuator 服务监控与管理
+management.endpoints.web.exposure.include: bus-refresh
+
+server:
+  port: 8201  #服务提供者端口
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/     

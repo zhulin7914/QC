@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: hystrix-turbine #服务名
+
+server:
+  port: 8300 #服务提供者端口
+ 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+ 
+#暴露 endpoints ，断路器监控需要，这部分需要学习actuator 服务监控与管理        
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      cors:
+        allowed-origins: "*"
+        allowed-methods: "*"
+
+#断路器聚合监控
+turbine:
+  app-config:  hystrix-dashboard,hystrix-one,hystrix-two   #监控的服务名
+  aggregator:
+    clusterConfig: default
+  clusterNameExpression: new String("default")
+  combine-host: true
+  instanceUrlSuffix:
+    default: actuator/hystrix.stream

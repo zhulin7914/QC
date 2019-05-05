@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com</groupId>
+  <artifactId>zhulin</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <name>zhulin</name>
+  <url>http://maven.apache.org</url>
+
+  <parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.3.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	
+  <modules>
+  	<module>zhulin-server</module>
+  	<module>zhulin-client</module>
+    <module>zhulin-ribbon</module>
+    <module>zhulin-feign</module>
+    <module>zhulin-zuul</module>
+    <module>zhulin-layui</module>
+    <module>zhulin-config-server</module>
+    <module>zhulin-config-client</module>
+    <module>zhulin-mq</module>
+    <module>zhulin-zipkin-hi</module>
+    <module>zhulin-zipkin-miya</module>
+    <module>zhulin-hystrix-dashboard</module>
+    <module>zhulin-hystrix-turbine</module>
+    <module>zhulin-hystrix-two</module>
+    <module>zhulin-apollo</module>
+    <module>zhulin-grpc-facade</module>
+    <module>zhulin-grpc-server</module>
+    <module>zhulin-grpc-client</module>
+    <module>zhulin-gateway</module>
+    <module>zhulin-gateway-two</module>
+  </modules>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<spring-cloud.version>Finchley.RELEASE</spring-cloud.version>
+	</properties>
+
+	<!-- 指定项目中公有的模块 -->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<!--指定项目中公有的依赖-->
+	<dependencies>
+	
+		<!-- 核心模块，包括自动配置支持、日志和YAML -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+	
+		<!-- 引入 spring-boot测试模块 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- 引入 spring boot aop starter依赖 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+		<!-- 引入 Gson依赖 -->  
+        <dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+		</dependency>
+		<!-- 引入 热部署依赖. -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <optional>true</optional>
+           <scope>true</scope>
+        </dependency>
+	</dependencies>
+
+	<!--指定使用maven打包-->
+	<build>
+	    <resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+		<plugins>
+			<!-- 引入 spring-boot插件模块 -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+	<repositories>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+  
+</project>

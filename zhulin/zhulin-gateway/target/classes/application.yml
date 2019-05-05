@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: service-getway #服务名
+
+server:
+  port: 8601 #服务提供者端口
+ 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+      

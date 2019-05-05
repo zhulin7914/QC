@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: fileServer-01 #服务名
+
+server:
+  port: 8763 #服务提供者端口
+ 
+eureka:
+  instance:
+      instance-id: spring-cloud-front2
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

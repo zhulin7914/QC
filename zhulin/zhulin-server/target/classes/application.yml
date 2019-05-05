@@ -1,0 +1,26 @@
+spring:
+  application:
+    #配置服务名称
+    name: eureka-server      
+    
+server:
+   #配置服务端口
+  port: 8761             
+   
+eureka:
+  instance:
+    #以IP地址注册到服务中心，相互注册使用IP地址
+    prefer-ip-address: false 
+    #服务注册中心实例的主机名
+    hostname: localhost
+  server:
+    # 测试时关闭自我保护机制，保证不可用服务及时踢出
+    enable-self-preservation: false       
+  client:
+    #是否向服务注册中心注册自己
+    fetch-registry: false 
+    #是否检索服务    
+    register-with-eureka: false     
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/  #服务注册中心的配置内容，指定服务注册中心的位置
+      
